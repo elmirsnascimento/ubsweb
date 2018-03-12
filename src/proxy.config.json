@@ -1,0 +1,6 @@
+{
+    "/buscarUbsDentroDeRaio": {
+           "target": "http://localhost:8080/buscarUbsDentroDeRaio",
+           "secure":false
+        }
+}

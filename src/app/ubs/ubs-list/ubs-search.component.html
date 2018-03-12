@@ -1,0 +1,48 @@
+
+
+<form class="form-inline form" #form="ngForm">
+	<div class="form-group col-sm-12 col-md-12">
+		<label class="small-label">Endereço: </label> <input type="text"
+			class="form-control col-xs-8 col-md-8" name="input_endereco"
+			[(ngModel)]="endereco" placeholder="Pesquise por endereço" required>
+		<button type="button" (click)="buscarUbsProximas()"
+			class="btn btn-primary">pesquisar</button>
+
+		<!-- <a><i class="fas fa-search"></i></a> -->
+	</div>
+
+
+</form>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="14"> <agm-marker
+	[latitude]="lat" [longitude]="lng" title="Minha Localização"> </agm-marker> <agm-marker
+	*ngFor="let marcador of listaUbs" [latitude]="marcador.latitude"
+	[longitude]="marcador.longitude" [title]="marcador.nome"> </agm-marker> </agm-map>
+
+<table class="form-group table table-hover"  *ngIf="listaUbs?.length > 0">
+	<thead>
+		<tr>
+			<td>Nome</td>
+			<td>Endereço</td>
+			<td>Cidade</td>
+			<td>Telefone</td>
+			<td>Aval. Estrutura Física</td>
+			<td>Aval. Adapt. Idosos</td>
+			<td>Aval. Equipamento</td>
+			<td>Aval. Medicamento</td>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr *ngFor="let ubs of listaUbs">
+			<td>{{ ubs.nome }}</td>
+			<td>{{ ubs.endereco }}</td>
+			<td>{{ ubs.cidade }}</td>
+			<td>{{ ubs.telefone }}</td>
+			<td>{{ ubs.scoreEstruturaFisica }}</td>
+			<td>{{ ubs.scoreAdaptacao }}</td>
+			<td>{{ ubs.scoreEquipamento }}</td>
+			<td>{{ ubs.scoreMedicamento }}</td>
+			
+		</tr>
+	</tbody>
+</table>
